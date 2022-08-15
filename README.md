@@ -37,7 +37,6 @@ THEN I select which criteria to include in the password
 
 WHEN all prompts are answered
 THEN a password is generated that matches the selected criteria
-DEVELOPER NOTE: since a password is always generated then all prompts (as a collection) must be answered to allow generation since there is no Use Case/Scenario to allow for the password not being generated which means the user is in a loop until they make the right choices to generate a password
 
 WHEN the password is generated
 THEN the password is either displayed in an alert or written to the page
