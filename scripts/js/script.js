@@ -15,18 +15,19 @@ function generatePassword(){
   passwordLength = window.prompt("Password Length [from 8-128]:",8);
   if (passwordLength === null) {
     console.log("Cancel was pressed");
-    return "Generation of password cancelled!";
+    return "Generation of password cancelled.";
   }
 
   if (passwordLength.length == 0) {
     console.log("Length not set");
     window.alert("You must include a number!");
+    return "Zero length password not allowed."
   }
 
   // var passwordLetters = [];
   // var passwordLetters = new Array();
   // the string is also an array of characters!
-  let isNotPureDigits  = false;
+  let passwordLengthIsPureDigits  = true;
   let x = 0;
   while (x < passwordLength.length) {
     console.log("Letters contained are: " + passwordLength[x]);
@@ -43,39 +44,61 @@ function generatePassword(){
         {
       x++;
     } else {
-      isNotPureDigits = true;
-      x = passwordLength.length;
-      window.alert("Only use digits! Try again.")
+      passwordLengthIsPureDigits = false;
+      window.alert("Only use digits for passsword length! Try again.")
+      return "Non digits were used in the password length [" + passwordLength + "]."
     }
   };
   // DEPRECATED alert("abc".substr(1,2)); // returns "bc"
   // alert("abc".substring(1,2)); // returns "b"
 
 
-  if (true) {
-    console.log(typeof passwordLength);
-    window.alert("valid");
-    // (passwordLength < 8 || passwordLength > 128)
+  if (passwordLengthIsPureDigits) {
+    if (passwordLength < 8 || passwordLength > 128) {
+      window.alert("Enter a number from 8 to 128! Try again.");
+      return passwordLength + " is outside the 8-128 range."
+    }
   }
   else 
   {
-    window.alert("invalid choice!");
+    window.alert("BUG: passwordLengthIsPureDigits should be true not false");
+    return "BUG detected!"
   }
 
-  return "CRASH";
-
-  if (window.prompt("Type in the length of the password [8-128 characters allowed]:",8))
-    console.log(true);
-  else {
-    console.log(false);
-    return "EXIT";
-  } 
-  
   isIncludeLowercase = window.confirm("Include lowercase letters?");
   isIncludeUppercase = window.confirm("Include uppercase letters?");
   isIncludeNumeric = window.confirm("Include numeric digits?");
   isIncludeSpecial = window.confirm("Include special characters?");
   window.alert("we are validating your choices");
+
+  console.log("Lowercase: " + isIncludeLowercase);
+  console.log("Uppercase: " + isIncludeUppercase);
+  console.log("Numeric: " + isIncludeNumeric);
+  console.log("Special: " + isIncludeSpecial);
+  
+  let numberOfCharacterTypes = 0;
+  if (isIncludeLowercase || isIncludeUppercase || isIncludeNumeric || isIncludeSpecial) {
+    // At least one character type was selected so continue
+    if (isIncludeLowercase) {numberOfCharacterTypes++};
+    if (isIncludeUppercase) {numberOfCharacterTypes++};
+    if (isIncludeNumeric) {numberOfCharacterTypes++};
+    if (isIncludeSpecial) {numberOfCharacterTypes++};
+    window.alert(numberOfCharacterTypes);
+    
+
+  } else {
+    window.alert("You must choose at least one of lowercase, uppercase, numeric, or special characters! Try again.")
+    return "At least on character type was not chosen."
+  }
+
+
+  if (isIncludeLowercase) {
+
+  }
+
+
+  return "CRASH";
+
   return "*&^&*^*GTGTG787878uhuhuhuh";
 }
 
