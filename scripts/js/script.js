@@ -1,17 +1,20 @@
 // Assignment Code
 var generateBtn = document.querySelector("#generate");
 
+// generatePassword called by writePassword
 function generatePassword() {
-  // requirements are that this function will always succeed
-  // which means the user will not be allowed to leave this function
-  // until they make the right choices to generate a password
 
   const lowercaseAlphabet = "abcdefghijklmnopqrstuvwxyz";
   const digitCharacters = "0123456789";
-  // !"#$%&'()*+,-./:;<=>?@[\]^_`{|}~
+  // these are the special characters used: !"#$%&'()*+,-./:;<=>?@[\]^_`{|}~
   let specialCharacters = ' !"';
   specialCharacters = specialCharacters + `#$%&'()*+,-./:;<=>?@[`;
   specialCharacters = specialCharacters + '\u005C' + "]^_`{|}~";
+
+  const charactersInAlphabet = 26;
+  const charactersInDigits = 10;
+  const charactersInSpecialCharacters = 32;
+
   // default selection values
   var passwordLength = "8";
   var isIncludeLowercase = true;
@@ -20,27 +23,26 @@ function generatePassword() {
   var isIncludeSpecial = true;
   var returnPassword = "";
 
-
   // Input Validation
   passwordLength = window.prompt("Password Length [from 8-128]:",8);
+  
+  // user cancelled
   if (passwordLength === null) {
-    console.log("Cancel was pressed");
+    // console.log("Cancel was pressed");
     return "Generation of password cancelled.";
   }
 
+  // user typed nothing
   if (passwordLength.length == 0) {
-    console.log("Length not set");
     window.alert("You must include a number!");
     return "Zero length password not allowed."
   }
   
-  // var passwordLetters = [];
-  // var passwordLetters = new Array();
-  // the string is also an array of characters!
+  // user used non digits for password length
+  // the string is also an array of characters
   let passwordLengthIsPureDigits  = true;
   let x = 0;
   while (x < passwordLength.length) {
-    // console.log("Letters contained are: " + passwordLength[x]);
     if (digitCharacters.includes(passwordLength[x])) {
       x++;
     } else {
@@ -49,9 +51,8 @@ function generatePassword() {
       return "Non digits were used in the password length [" + passwordLength + "]."
     }
   };
-  // DEPRECATED alert("abc".substr(1,2)); // returns "bc"
-  // alert("abc".substring(1,2)); // returns "b"
 
+  // user typed in an out of range number
   if (passwordLengthIsPureDigits) {
     if (passwordLength < 8 || passwordLength > 128) {
       window.alert("Enter a number from 8 to 128! Try again.");
@@ -64,6 +65,7 @@ function generatePassword() {
     return "BUG detected!"
   }
 
+  // Input Validation
   isIncludeLowercase = window.confirm("Include lowercase letters?");
   isIncludeUppercase = window.confirm("Include uppercase letters?");
   isIncludeNumeric = window.confirm("Include numeric digits?");
@@ -76,43 +78,46 @@ function generatePassword() {
     return "At least on character type was not chosen."
   }
 
+  // All inputs are valid
+
   // Password Generator Algorithm
+  // for each password letter placeholder: 
+  //    select the next type of character and step to the next
+  //    repeat until all placeholders are filled
+  // the user can use any combination of character types
+
   var randomSelection = 0;
   let y = 0;
   let passwordLetterCount = Number(passwordLength) - 1;
 
-  // console.log("XXXX86 password length, " + passwordLength);
-  // console.log("XXXX87 password letter loop, " + passwordLetterCount);
-
   while (y <= passwordLetterCount) {
-    // console.log("y count: " + y);
+
     if (isIncludeLowercase && y <= passwordLetterCount) {
-      randomSelection = Math.floor(Math.random() * 26);
+      randomSelection = Math.floor(Math.random() * charactersInAlphabet);
       returnPassword = returnPassword + lowercaseAlphabet[randomSelection];
       y++;
     }
     if (isIncludeUppercase  && y <= passwordLetterCount) {
-      randomSelection = Math.floor(Math.random() * 26);
+      randomSelection = Math.floor(Math.random() * charactersInAlphabet);
       returnPassword = returnPassword + lowercaseAlphabet[randomSelection].toUpperCase();
       y++;
     }
     if (isIncludeNumeric  && y <= passwordLetterCount) {
-      randomSelection = Math.floor(Math.random() * 10);
+      randomSelection = Math.floor(Math.random() * charactersInDigits);
       returnPassword = returnPassword + digitCharacters[randomSelection];
       y++;
     }
     if (isIncludeSpecial  && y <= passwordLetterCount) {
-      randomSelection = Math.floor(Math.random() * 32);
+      randomSelection = Math.floor(Math.random() * charactersInSpecialCharacters);
       returnPassword = returnPassword + specialCharacters[randomSelection];
       y++;
     }
-    // console.log( "password => " + returnPassword);
-    // console.log(" Password Length is: " + returnPassword.length);
 
     if ((!isIncludeLowercase) && (!isIncludeUppercase) && (!isIncludeNumeric) && (!isIncludeSpecial)) {
       window.alert("BUG: infinite loop detected!");
       return "BUG: Error with final generate while loop";
     }
+
   };
 
   return returnPassword;
