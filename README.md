@@ -44,4 +44,4 @@ THEN the password is either displayed in an alert or written to the page
 ## Mockup
 ![The Password Generator includes Heading, a read only password generated text, and a Generate Password button.](./SeanWallacePasswordGeneratorReadmeMockup.png)
 ## Deployed Page
-The password generator can be found at: https://seanu2022.github.io/password_generator/
+The password generator can be found at: https://seanu2022.github.io/Sean-Wallace-Password-Generator/
