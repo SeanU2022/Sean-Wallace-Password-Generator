@@ -41,5 +41,7 @@ THEN a password is generated that matches the selected criteria
 WHEN the password is generated
 THEN the password is either displayed in an alert or written to the page
 ```
-## Note
+## Mockup
+![The Password Generator includes Heading, a read only password generated text, and a Generate Password button.](./SeanWallacePasswordGeneratorReadmeMockup.png)
+## Deployed Page
 The password generator can be found at: https://seanu2022.github.io/password_generator/

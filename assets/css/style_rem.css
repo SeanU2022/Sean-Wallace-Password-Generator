@@ -10,6 +10,8 @@ body,
   height: 100%;
   margin: 0;
   padding: 0;
+  /* set 1rem to 10px instead of native 16px to make it easier to calculate font-size values for the rest of the page (e.g. 1.6rem is 16px, 2.0rem is 20px, etc.) */
+  font-size: 62.5%;
 }
 
 body {
@@ -18,28 +20,28 @@ body {
 }
 
 .wrapper {
-  padding-top: 30px;
-  padding-left: 20px;
-  padding-right: 20px;
+  padding-top: 3rem;
+  padding-left: 2rem;
+  padding-right: 2rem;
 }
 
 header {
   text-align: center;
-  padding: 20px;
-  padding-top: 0px;
+  padding: 2rem;
+  padding-top: 0rem;
   color: hsl(206, 17%, 28%);
 }
 
 .card {
   background-color: hsl(0, 0%, 100%);
-  border-radius: 5px;
-  border-width: 1px;
+  border-radius: .5rem;
+  border-width: .1rem;
   box-shadow: rgba(0, 0, 0, 0.15) 0px 2px 8px 0px;
   color: hsl(206, 17%, 28%);
-  font-size: 1.125rem;  /* from 18px */
+  font-size: 1.8rem;
   margin: 0 auto;
-  max-width: 800px;
-  padding: 30px 40px;
+  max-width: 80rem;
+  padding: 3rem 4rem;
 }
 
 .card-header::after {
@@ -47,32 +49,11 @@ header {
   display: block;
   width: 100%;
   background: #e7e9eb;
-  height: 2px;
+  height: .2rem;
 }
 
 .card-body {
-  min-height: 100px;
-}
-
-#password {
-  -webkit-appearance: none;
-  -moz-appearance: none;
-  appearance: none;
-  border: none;
-  display: block;
-  width: 100%;
-  padding-top: 15px;
-  padding-left: 15px;
-  padding-right: 15px;
-  padding-bottom: 85px;
-  font-size: 1.2rem;
-  text-align: center;
-  margin-top: 10px;
-  margin-bottom: 10px;
-  border: 2px dashed #c0c7cf;
-  border-radius: 6px;
-  resize: none;
-  overflow: hidden;
+  min-height: 10rem;
 }
 
 .card-footer {
@@ -84,7 +65,7 @@ header {
   display: block;
   width: 100%;
   background: #e7e9eb;
-  height: 2px;
+  height: .2rem;
 }
 
 .card-footer::after {
@@ -96,15 +77,15 @@ header {
 .btn {
   border: none;
   background-color: hsl(360, 91%, 36%);
-  border-radius: 25px;
+  border-radius: 2.5rem;
   box-shadow: rgba(0, 0, 0, 0.1) 0px 1px 6px 0px rgba(0, 0, 0, 0.2) 0px 1px 1px
     0px;
   color: hsl(0, 0%, 100%);
   display: inline-block;
-  font-size: 1.375rem; /* from 22px */
-  line-height: 22px;
-  margin: 16px 16px 16px 20px;
-  padding: 14px 34px;
+  font-size: 2.2rem;
+  line-height: 2.2rem;
+  margin: 1.6rem 1.6rem 1.6rem 2rem;
+  padding: 1.4rem 3.4rem;
   text-align: center;
   cursor: pointer;
 }
@@ -114,25 +95,50 @@ button[disabled] {
   background: #c0c7cf;
 }
 
+.float-right {
+  float: right;
+}
+
+#password {
+  -webkit-appearance: none;
+  -moz-appearance: none;
+  appearance: none;
+  border: none;
+  display: block;
+  width: 100%;
+  padding-top: 1.5rem;
+  padding-left: 1.5rem;
+  padding-right: 1.5rem;
+  padding-bottom: 8.5rem;
+  font-size: 1.2rem;
+  text-align: center;
+  margin-top: 1rem;
+  margin-bottom: 1rem;
+  border: 2rem dashed #c0c7cf;
+  border-radius: .6rem;
+  resize: none;
+  overflow: hidden;
+}
+
 /* RESPONSIVE */
 /* Tablets */
 @media screen and (max-width: 992px) {
   .btn {
     font-size: 1.2rem;
-    margin: 16px 0px 0px 0px;
-    padding: 10px 15px;
+    margin: 1.6rem 0 0 0;
+    padding: 1rem 1.5rem;
   }
 
   #password {
     font-size: 1.2rem;
   }
 }
-/* Medium Mobile Devices */
+
 @media (max-width: 768px) {
   .btn {
     font-size: 1rem;
-    margin: 16px 0px 0px 0px;
-    padding: 10px 15px;
+    margin: 1.6rem 0 0 0;
+    padding: 1rem 1.5rem;
   }
 
   #password {
@@ -140,11 +146,10 @@ button[disabled] {
   }
 }
 
-/* Smaller Mobile Devices */
 @media (max-width: 500px) {
   .btn {
     font-size: 0.8rem;
-    margin: 8px 0px 0px 0px;
-    padding: 5px 10px;
+    margin: 0.8rem 0 0 0;
+    padding: .5rem 1remx;
   }
 }
