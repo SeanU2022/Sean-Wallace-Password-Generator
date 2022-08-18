@@ -6,14 +6,14 @@ function generatePassword() {
 
   const lowercaseAlphabet = "abcdefghijklmnopqrstuvwxyz";
   const digitCharacters = "0123456789";
-  // these are the special characters used: !"#$%&'()*+,-./:;<=>?@[\]^_`{|}~
+  // these are the 33 special characters used: <space>!"#$%&'()*+,-./:;<=>?@[\]^_`{|}~
   let specialCharacters = ' !"';
   specialCharacters = specialCharacters + `#$%&'()*+,-./:;<=>?@[`;
   specialCharacters = specialCharacters + '\u005C' + "]^_`{|}~";
 
   const charactersInAlphabet = 26;
   const charactersInDigits = 10;
-  const charactersInSpecialCharacters = 32;
+  const charactersInSpecialCharacters = 33;
 
   // default selection values
   var passwordLength = "8";
